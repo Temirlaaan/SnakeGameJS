@@ -37,6 +37,12 @@ window.onload = function(){
 
     placeFood();
     document.addEventListener("keyup", handleKeyPress);
+
+    document.addEventListener("keyup", function (e) {
+        if (e.code === "KeyR") {
+            resetMaxScore();
+        }
+    });
     //update;;
     updateInterval = setInterval(update, 1000 / speed);
 }
@@ -150,4 +156,11 @@ function changeDirection(e){
 function placeFood(){
     edaX = Math.floor(Math.random() * cols) * blockSize;
     edaY = Math.floor(Math.random() * rows) * blockSize;
+}
+
+
+function resetMaxScore() {
+    maxScore = 0;
+    localStorage.setItem('maxScore', maxScore);
+    document.getElementById('max-score').innerText = maxScore;
 }
